@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+           
+            font-family: Arial, sans-serif;
+            margin-top: 150px;           
+            background: #f0f0f0;
+            display: flex;
+            align-items: flex-start;            
+             direction: rtl;                   
+
+        }
+
+
+         .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        select {
+            height: 70px;
+            width: 470px;
+            font-size: 30px;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 1px rgba(0, 0, 0, 0.2);
+            color: BLACK;
+            background-color: YELLOW;
+            border: 3px solid BLACK;
+            text-align: right; /* محاذاة النص لليمين */           
+            font-weight: bold;
+        }
+
+        select:focus {
+            outline: yellow;
+        }
+
+        button {
+            display: block;
+            width: 620px;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 30px;
+           background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+             border: 3px solid BLACK;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل الأزرار إلى اليمين */
+            font-weight: bold;
+        }
+
+        .back-button {
+            width: 620px;
+            height: 70px;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 28px;
+            background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+            border: 3px solid BLACK;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل زر الرجوع إلى اليمين */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-container {
+            margin-bottom: 10px;
+            align-items: flex-end; /* محاذاة الأزرار إلى اليمين */
+            margin-left: auto; /* دفع الأزرار لليمين */
+        }
+
+
+             button: hover {
+            background-color:YELLOW;
+        }
+
+       .content-div {
+            background-color: white;
+            padding: 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            width: 558px;
+            border: 2px solid #000080;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080;
+        }
+       header {
+          
+            background: linear-gradient(to bottom,#003366,  #000000);
+            position: fixed;
+            height: 110px;
+            top: 0;
+            width: 100%;            
+            color: black;
+            z-index: 1000;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: yellow;            
+            align-items: center;
+            border: 2px solid #000080;
+            font-size: 18px;
+ 
+        }
+
+        .selected-info {
+           background: #f0f0f0;
+            padding: 30px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 620px;
+            font-size: 35px;
+            text-align: center;
+              font-weight: bold;
+          
+        }
+        label {
+            font-size: 28px;
+            margin-bottom: 2px;
+            display: block;
+            text-align: center; /* محاذاة النص إلى اليمين */
+        }
+      
+ /* تعديل حجم الإعلان */
+        .ad-container iframe {
+            width: 100%;
+            height: 800px; /* تكبير الإعلان ليغطي عرض الصفحة */
+            border: none;
+            margin: 0;
+            border: 2px solid BLACK;
+            text-align: center;
+            font-size: 20px;
+             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات: Egle</label>
+<select id="carSelect" onchange="showModel()">
+<option value="0">اضغط هناء لأختيار اسم السياره</option>
+<option value="1">SUMMIT</option>
+<option value="2">TALON</option>
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>        
+<div id="1Model" class="hidden button-container">
+<button onclick="goToDiv('DV1', '1Model')">1993-1998</button>        
+</div>
+<div id="2Model" class="hidden button-container">
+<button onclick="goToDiv('DV2', '2Model')">1993-1994</button>
+<button onclick="goToDiv('DV2', '2Model')">1995-2000</button>
+</div>
+<div id="DV1" class="hidden content-div">معلومات عن     
+<li>SUMMIT</li>
+<li>مديل 1993-1998</li>
+<li>ملاحظة: موقع وحدة الإرسال: -</li>
+<li>جميع الموديلات أسفل عجلة القيادة، خلف لوحة مسند الركبة.</li>
+<li>1. افتح باب السائق واتركه مفتوحًا.</li>
+<li>2. أدر مفتاح الإشعال إلى وضع التشغيل.</li>
+<li>3. اضغط مع الاستمرار على زر مؤشر LED للحالة لمدة 15 ثانية، واستمر في الضغط على الزر.</li>
+<li>4. سيتم قفل الأبواب وفتحها 3 مرات.</li>
+<li>5. مع الاستمرار في الضغط على الزر، اضغط على الزر 1 في جهاز الإرسال عن بعد الأول.</li>
+<li>6. سيتم قفل الأبواب وفتحها.</li>
+<li>7. مع الاستمرار في الضغط على الزر، اضغط على الزر 1 في جهاز الإرسال عن بعد الثاني.</li>
+<li>8. سيتم قفل الأبواب وفتحها.</li>
+<li>9. حرر زر البرمجة.</li>
+<li>10. أوقف تشغيل الإشعال وأغلق الأبواب.</li>
+<li>11. تحقق من تشغيل جميع أجهزة الإرسال عن بعد بشكل صحيح.</li>
+</div>
+<div id="DV2" class="hidden content-div">معلومات عن      
+<li>TALON</li>
+<li>ملاحظة: موقع وحدة الاستقبال: </li>
+<li>Diamante = بالقرب من صندوق القفازات. </li>
+<li>Eclipse = أسفل عجلة القيادة، خلف لوحة دعم الركبة. </li>
+<li>Montero = أسفل عجلة القيادة، خلف لوحة دعم الركبة. </li>
+<li>Galant = على محرك المنفاخ، فوق صندوق القفازات. </li>
+<li>1. حدد موقع موصل برمجة RKE، الموجود بالقرب من وحدة جهاز الإرسال عن بعد. </li>
+<li>2. باستخدام سلك توصيل مناسب، قم بتوصيل دبابيس البرمجة معًا. </li>
+<li>3. سيتم قفل الأبواب وفتحها لتأكيد وضع البرمجة. </li>
+<li>4. اضغط على زر القفل في جهاز الإرسال عن بعد الأول. </li>
+<li>5. سيتم قفل الأبواب وفتحها. </li>
+<li>6. اضغط على زر القفل في جهاز الإرسال عن بعد الثاني. </li>
+<li>7. سيتم قفل الأبواب وفتحها. </li>
+<li>8. قم بإزالة سلك التوصيل. </li>
+<li>9. تحقق من تشغيل جميع أجهزة الإرسال عن بعد بشكل صحيح. </li>
+</div>
+<div class="ad-container">
+<iframe id="adFrame" src="https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a"></iframe>
+    </div>
+</div>
+ <div class="ad-container">
+<iframe id="adFrame" src="https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad"></iframe>
+    </div>
+
+<script>
+// روابط الإعلانات
+        const adLinks = [
+            "https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78",
+            "https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff",  // يمكنك إضافة المزيد من الروابط هنا
+            "https://muzzlequick.com/v5bgvtzdz?key=caca17e07e0c43d913b1bb49f4512654",
+
+            "https://muzzlequick.com/ign62tqcez?key=6daa24573ee6b6e8ba0378ca697a9f2d",
+            "https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a",  // يمكنك إضافة المزيد من الروابط هنا
+            "https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad",
+        ];
+
+        let currentAdIndex = 0;
+
+        // دالة لتغيير الإعلان
+        function changeAd() {
+            currentAdIndex = (currentAdIndex + 1) % adLinks.length;
+            document.getElementById('adFrame').src = adLinks[currentAdIndex];
+        }
+
+        // تغيير الإعلان كل دقيقة (60 ثانية)
+        setInterval(changeAd, 10000);
+
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+        document.getElementById('1Model').classList.add('hidden');
+        document.getElementById('2Model').classList.add('hidden');
+       
+         // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

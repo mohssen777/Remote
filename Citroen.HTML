@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+           
+            font-family: Arial, sans-serif;
+            margin-top: 150px;           
+            background: #f0f0f0;
+            display: flex;
+            align-items: flex-start;            
+             direction: rtl;                   
+
+        }
+
+
+         .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        select {
+            height: 70px;
+            width: 470px;
+            font-size: 30px;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 1px rgba(0, 0, 0, 0.2);
+            color: BLACK;
+            background-color: YELLOW;
+            border: 3px solid BLACK;
+            text-align: right; /* محاذاة النص لليمين */           
+            font-weight: bold;
+        }
+
+        select:focus {
+            outline: yellow;
+        }
+
+        button {
+            display: block;
+            width: 620px;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 30px;
+           background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+             border: 3px solid BLACK;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل الأزرار إلى اليمين */
+            font-weight: bold;
+        }
+
+        .back-button {
+            width: 620px;
+            height: 70px;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 28px;
+            background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+            border: 3px solid BLACK;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل زر الرجوع إلى اليمين */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-container {
+            margin-bottom: 10px;
+            align-items: flex-end; /* محاذاة الأزرار إلى اليمين */
+            margin-left: auto; /* دفع الأزرار لليمين */
+        }
+
+
+             button: hover {
+            background-color:YELLOW;
+        }
+
+       .content-div {
+            background-color: white;
+            padding: 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            width: 558px;
+            border: 2px solid #000080;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080;
+        }
+       header {
+          
+            background: linear-gradient(to bottom,#003366,  #000000);
+            position: fixed;
+            height: 110px;
+            top: 0;
+            width: 100%;            
+            color: black;
+            z-index: 1000;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: yellow;            
+            align-items: center;
+            border: 2px solid #000080;
+            font-size: 18px;
+ 
+        }
+
+        .selected-info {
+           background: #f0f0f0;
+            padding: 30px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 620px;
+            font-size: 35px;
+            text-align: center;
+              font-weight: bold;
+          
+        }
+        label {
+            font-size: 28px;
+            margin-bottom: 2px;
+            display: block;
+            text-align: center; /* محاذاة النص إلى اليمين */
+        }
+      
+ /* تعديل حجم الإعلان */
+        .ad-container iframe {
+            width: 100%;
+            height: 800px; /* تكبير الإعلان ليغطي عرض الصفحة */
+            border: none;
+            margin: 0;
+            border: 2px solid BLACK;
+            text-align: center;
+            font-size: 20px;
+             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات: CITROEN</label>
+<select id="carSelect" onchange="showModel()">
+<option value="A">BERLINGO</option>
+<option value="B">C-QUATRE</option>
+<option value="C">C-TRIOMPHE</option>
+<option value="D">C1</option>
+<option value="E">C2</option>
+<option value="F">C4</option>
+<option value="G">C5</option>
+<option value="H">DISPATCH</option>
+<option value="I">EVASION</option>
+<option value="J">JUMPY</option>
+<option value="K">SAXO</option>
+<option value="L">SYNERGIE</option>
+
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>
+<div id="AModel" class="hidden button-container">          
+ <button onclick="goToDiv('DV1', 'AModel')">1996-2007</button>
+ <button onclick="goToDiv('DV2', 'AModel')">1998-2018</button> 
+</div>
+<div id="BModel" class="hidden button-container">
+<button onclick="goToDiv('DV3', 'BModel')">2004-2010</button>   
+</div>
+<div id="CModel" class="hidden button-container">
+<button onclick="goToDiv('DV4', 'CModel')">2004-2010</button> 
+</div>
+<div id="DModel" class="hidden button-container">
+<button onclick="goToDiv('DV5', 'DModel')">2005-2014</button>
+<button onclick="goToDiv('DV6', 'DModel')">2014-2018</button>
+</div>
+<div id="EModel" class="hidden button-container">          
+<button onclick="goToDiv('DV7', 'EModel')">2003-2009</button>  
+</div>
+<div id="FModel" class="hidden button-container">
+<button onclick="goToDiv('DV8', 'FModel')">2004-2010</button> 
+</div>
+<div id="GModel" class="hidden button-container">         
+<button onclick="goToDiv('DV9', 'GModel')">2001-2008</button>  
+</div>
+<div id="HModel" class="hidden button-container">
+ <button onclick="goToDiv('DV10', 'HModel')">1994-2006</button>   
+</div>
+<div id="IModel" class="hidden button-container">
+<button onclick="goToDiv('DV11', 'IModel')">1994-2002</button> 
+</div>
+<div id="JModel" class="hidden button-container">
+<button onclick="goToDiv('DV12', 'JModel')">1994-2006</button> 
+</div>
+<div id="KModel" class="hidden button-container">
+<button onclick="goToDiv('DV13', 'KModel')">1993-2003</button>
+</div>
+<div id="LModel" class="hidden button-container">
+<button onclick="goToDiv('DV14', 'LModel')">1994-2002</button>  
+</div>
+    
+    <!-- Divs for car models -->
+<!-- Slider Poster -->
+<div id="DV1" class="hidden content-div">معلومات عن     
+<li>BERLINGO</li>
+<li>m1</li>
+<li>1. قم بتبديل مفتاح الإشعال إلى وضع ACC باستخدام المفتاح.</li>
+<li>ملاحظة: تأكد من فصل المفتاح وجهاز الإرسال عن بعد عن بعضهما البعض.</li>
+<li>2. اضغط باستمرار على مفتاح جهاز الإرسال عن بعد باتجاه جهاز الاستقبال في منطقة الإضاءة الداخلية.</li>
+<li>3. اضغط على الزر الكبير، ثم الزر الصغير في جهاز الإرسال عن بعد.</li>
+<li>4. كرر ذلك لمفتاح جهاز الإرسال عن بعد الثاني إذا لزم الأمر.</li>
+<li>5. قم بإيقاف تشغيل الإشعال.</li>
+<li>إجراء إعادة المزامنة</li>
+<li>1. قم بتشغيل الإشعال.</li>
+<li>2. اضغط باستمرار على زر القفل في جهاز الإرسال عن بعد لمدة 10 ثوانٍ.</li>
+</div>
+<div id="DV2" class="hidden content-div">معلومات عن      
+<li>m2</li>
+<li>1. قم بتبديل مفتاح الإشعال إلى وضع ACC باستخدام المفتاح.</li>
+<li>ملاحظة: تأكد من فصل المفتاح وجهاز الإرسال عن بعد عن بعضهما البعض.</li>
+<li>2. اضغط باستمرار على مفتاح جهاز الإرسال عن بعد باتجاه جهاز الاستقبال في منطقة الإضاءة الداخلية.</li>
+<li> 3. اضغط على الزر الكبير، ثم الزر الصغير في جهاز الإرسال عن بعد.</li>
+<li>4. كرر ذلك لمفتاح جهاز الإرسال عن بعد الثاني إذا لزم الأمر.</li>
+<li>5. أوقف تشغيل الإشعال.</li>
+<li>إجراء إعادة المزامنة</li>
+<li>1. قم بتشغيل الإشعال.</li>
+<li>2. اضغط مع الاستمرار على زر القفل في جهاز الإرسال عن بعد لمدة 10 ثوانٍ.</li>
+</div>
+<div id="DV3" class="hidden content-div">معلومات عن
+<li>C-QUATRE</li>
+<li>1. قم بتبديل الإشعال إلى وضع التشغيل باستخدام المفتاح الأول.</li>
+<li>2. اضغط على زر القفل لمدة 5 ثوانٍ.</li>
+<li>3. أخرج المفتاح وانتظر لمدة 30 ثانية.</li>
+<li>4. كرر ذلك لمفتاح جهاز الإرسال عن بعد الثاني إذا لزم الأمر.</li>
+<li>5. أوقف تشغيل الإشعال وتحقق من التشغيل.</li>
+</div>
+<div id="DV4" class="hidden content-div">معلومات عن
+<li>C-TRIOMPHE</li>
+<li>1. قم بتبديل مفتاح الإشعال إلى وضع التشغيل باستخدام المفتاح الأول.</li>
+<li>2. اضغط على زر القفل لمدة 5 ثوانٍ.</li>
+<li>3. قم بإزالة المفتاح وانتظر لمدة 30 ثانية.</li>
+<li>4. كرر ذلك مع المفتاح البعيد الثاني إذا لزم الأمر.</li>
+<li>5. قم بإيقاف تشغيل مفتاح الإشعال وتحقق من التشغيل.</li>
+</div>
+<div id="DV5" class="hidden content-div">معلومات عن      
+<li>C1</li>
+<li>m1 </li>
+<li>ملاحظة: تأكد من أن مفتاح الإشعال في وضع إيقاف التشغيل وباب السائق مفتوح.</li>
+<li>ملاحظة: يجب إكمال هذا الإجراء في غضون دقيقتين.</li>
+<li>1. قم بتشغيل مفتاح الإشعال وإيقاف تشغيله.</li>
+<li>2. أغلق وافتح باب السائق مرتين � بحيث ينتهي الباب في وضع الفتح.</li>
+<li>3. قم بتشغيل مفتاح الإشعال وإيقاف تشغيله.</li>
+<li>4. أغلق وافتح باب السائق مرتين � بحيث ينتهي الباب في وضع الفتح.</li>
+<li>5. أغلق باب السائق.</li>
+<li> 6. قم بقفل الباب باستخدام زر قفل الباب الموجود على الباب.</li>
+<li>7. قم بتشغيل الإشعال ثم إيقاف تشغيله.</li>
+<li>8. قم بإلغاء القفل باستخدام زر قفل الباب الموجود على الباب - سوف تعمل الأقفال بشكل دوري للإشارة إلى وضع البرمجة.</li>
+<li>9. قم بإزالة المفتاح من الإشعال.</li>
+<li>ملاحظة: تتطلب بعض الموديلات تركه في الإشعال.</li>
+<li>10. اضغط على زري القفل وفتح القفل في جهاز الإرسال عن بعد وحررهما.</li>
+<li>11. اضغط على زر القفل في جهاز الإرسال عن بعد وحررهما.</li>
+<li>12. افحص أجهزة الإرسال عن بعد للتأكد من عملها.</li>
+</div>
+<div id="DV6" class="hidden content-div">معلومات عن     
+<li>م2</li>
+<li>ملاحظة: تأكد من أن مفتاح الإشعال في وضع إيقاف التشغيل وأن باب السائق مفتوح.</li>
+<li>ملاحظة: يجب إكمال هذا الإجراء في غضون دقيقتين.</li>
+<li>1. قم بتشغيل الإشعال وإيقاف تشغيله.</li>
+<li>2. أغلق وافتح باب السائق مرتين � حتى ينتهي الباب في وضع الفتح.</li>
+<li>3. قم بتشغيل الإشعال وإيقاف تشغيله.</li>
+<li> 4. أغلق وافتح باب السائق مرتين - بحيث ينتهي الباب في وضع الفتح.</li>
+<li>5. أغلق باب السائق.</li>
+<li>6. أغلق الباب باستخدام زر قفل الباب الموجود على الباب.</li>
+<li>7. قم بتشغيل الإشعال ثم إيقاف تشغيله.</li>
+<li>8. افتح القفل باستخدام زر قفل الباب الموجود على الباب - ستدور الأقفال للإشارة إلى وضع البرمجة.</li>
+<li>9. أخرج المفتاح من الإشعال.</li>
+<li>ملاحظة: تتطلب بعض الموديلات تركه في الإشعال.</li>
+<li>10. اضغط على زري القفل وفتح القفل في جهاز الإرسال عن بعد وحررهما.</li>
+<li>11. اضغط على زر القفل في جهاز الإرسال عن بعد وحررهما.</li>
+<li>12. افحص أجهزة الإرسال عن بعد للتأكد من عملها.</li>
+</div>
+<div id="DV7" class="hidden content-div">معلومات عن
+<li>C2</li>
+<li>1. أوقف تشغيل الإشعال وأخرج المفتاح.</li>
+<li>2. انتظر لمدة دقيقة واحدة دون الضغط على أزرار أي جهاز إرسال عن بعد.</li>
+<li>3. قم بتشغيل الإشعال باستخدام المفتاح/جهاز الإرسال عن بعد المراد مزامنته.</li>
+<li>4. في غضون 10 ثوانٍ، اضغط على زر القفل لمدة 5 ثوانٍ.</li>
+<li>5. أوقف تشغيل الإشعال وأخرج المفتاح.</li>
+<li>6. كرر الخطوات من 3 إلى 5 للمفاتيح الأخرى.</li>
+<li>ملاحظة: انتظر 30 ثانية، تتم مزامنة أجهزة التحكم عن بعد.</li>
+<li>7. تحقق من قفل/فتح أبواب السيارة والباب الخلفي.</li>
+
+</div>
+<div id="DV8" class="hidden content-div">معلومات عن
+<li>C4</li>
+<li>1. قم بتبديل الإشعال إلى وضع التشغيل باستخدام المفتاح الأول.</li>
+<li>2. اضغط على زر القفل لمدة 5 ثوانٍ.</li>
+<li>3. أخرج المفتاح وانتظر لمدة 30 ثانية.</li>
+<li>4. كرر الخطوات للمفتاح عن بعد الثاني إذا لزم الأمر.</li>
+<li> 5. قم بإيقاف تشغيل الإشعال وتحقق من التشغيل.</li>
+</ul>
+</div>
+<div id="DV9" class="hidden content-div">معلومات عن     
+<li>C5</li>
+<li>1. قم بتحويل الإشعال إلى وضع التشغيل باستخدام المفتاح الأول.</li>
+<li>2. اضغط على زر القفل لمدة 5 ثوانٍ.</li>
+<li>3. قم بإزالة المفتاح وانتظر لمدة 30 ثانية.</li>
+<li>4. كرر ذلك مع المفتاح البعيد الثاني إذا لزم الأمر.</li>
+<li>5. قم بإيقاف تشغيل الإشعال وتحقق من التشغيل.</li>
+</div>
+<div id="DV10" class="hidden content-div">معلومات عن     
+<li>DISPATCH</li>
+<li>1. قم بتحويل الإشعال إلى وضع التشغيل وانتظر حتى ينطفئ مؤشر LED للأمان (إذا كان مثبتًا).</li>
+<li>2. اضغط على زري القفل وفتح القفل في غضون 20 ثانية.</li>
+<li>3. اضغط على زري القفل وفتح القفل على جميع أجهزة الإرسال عن بعد الإضافية في غضون 10 ثوانٍ.</li>
+<li>4. يجب أن يضيء مؤشر LED للأمان لمدة ثانية واحدة.</li>
+<li>5. قم بإيقاف تشغيل الإشعال وتحقق من التشغيل.</li>
+</div>
+<div id="DV11" class="hidden content-div">معلومات عن
+<li>EVASION</li>
+<li>قفل الباب المركزي (مفتاح بزر واحد) </li>
+<li>1. تأكد من إلغاء قفل جميع الأبواب باستخدام المفتاح. </li>
+<li>2. اضغط مع الاستمرار على زر مفتاح جهاز الإرسال عن بعد حتى يتوقف مصباح LED عن الوميض. </li>
+<li>3. بعد تحرير الزر، سيضيء مصباح LED باستمرار. </li>
+<li>4. اضغط على زر جهاز الإرسال عن بعد مرة واحدة، وسيطفأ مصباح LED. </li>
+<li>5. افتح الباب مع الاستمرار في الضغط على مفتاح جهاز الإرسال عن بعد بالقرب من مفتاح الإشعال، واضغط على زر جهاز الإرسال عن بعد مرة واحدة. </li>
+<li>6. الآن قم بتشغيل الإشعال، وانتظر 10 ثوانٍ ثم أوقف تشغيل الإشعال. </li>
+<li>7. بعد 5 ثوانٍ، يجب أن يعمل جهاز الإرسال عن بعد الآن. </li>
+<li>قفل الباب المركزي مع القفل التلقائي (مفتاح بزرين) </li>
+<li>1. تأكد من إلغاء قفل جميع الأبواب باستخدام المفتاح.</li>
+<li> 2. اضغط مع الاستمرار على زر مفتاح جهاز الإرسال عن بعد الكبير أثناء وميض مؤشر LED لمدة 20 ثانية.</li>
+<li>3. بعد 20 ثانية، اضغط على زر القفل الصغير مرة واحدة مع الاستمرار في الضغط على الزر الكبير.</li>
+<li>4. سيتوقف مؤشر LED عن الوميض.</li>
+<li>5. حرر الزر الكبير وسيضيء مؤشر LED باستمرار.</li>
+<li>6. اضغط على الزر الكبير مرة واحدة، وسيطفئ مؤشر LED.</li>
+<li>7. افتح الباب واضغط مع الاستمرار على مفتاح جهاز الإرسال عن بعد بالقرب من مفتاح الإشعال، واضغط على زر جهاز الإرسال عن بعد الكبير مرة واحدة.</li>
+<li>8. الآن قم بتشغيل الإشعال، وانتظر لمدة 10 ثوانٍ ثم أوقف تشغيل الإشعال.</li>
+<li>9. بعد 5 ثوانٍ، يجب أن يعمل جهاز الإرسال عن بعد الآن.</li>
+</ul>
+</div>
+<div id="DV12" class="hidden content-div">معلومات عن     
+<li>JUMPY</li>
+<li>1. قم بتشغيل الإشعال وانتظر حتى ينطفئ مؤشر LED للأمان (إذا كان مثبتًا).</li>
+<li>2. اضغط على زري القفل وفتح القفل في غضون 20 ثانية.</li>
+<li>3. اضغط على زري القفل وفتح القفل في جميع أجهزة الإرسال عن بعد الإضافية في غضون 10 ثوانٍ.</li>
+<li>4. يجب أن يضيء مؤشر LED للأمان لمدة ثانية واحدة.</li>
+<li>5. أوقف تشغيل الإشعال وتحقق من التشغيل.</li>
+</div>
+<div id="DV13" class="hidden content-div">معلومات عن
+<li>SAXO</li>
+<li>1. افتح قفل السيارة باستخدام شفرة المفتاح.</li>
+<li>2. في غضون 30 ثانية، اضغط على زر القفل مرتين في جهاز الإرسال عن بعد.</li>
+<li>ملاحظة: زر القفل هو الزر الأكبر.</li>
+<li>3. تحقق من تشغيل جهاز الإرسال عن بعد.</li>
+</ul>
+</div>
+<div id="DV14" class="hidden content-div">معلومات عن      
+<li>SYNERGIE</li>
+<li>قفل الباب المركزي (مفتاح بزر واحد)</li>
+<li>1. تأكد من فتح قفل جميع الأبواب باستخدام المفتاح.</li>
+<li>2. اضغط مع الاستمرار على زر مفتاح جهاز الإرسال عن بعد حتى يتوقف مؤشر LED عن الوميض.</li>
+<li> 3. بعد تحرير الزر، سيضيء مؤشر LED باستمرار.</li>
+<li>4. اضغط على زر جهاز الإرسال عن بعد مرة واحدة، وسيطفئ مؤشر LED.</li>
+<li>5. افتح الباب واضغط باستمرار على مفتاح جهاز الإرسال عن بعد بالقرب من مفتاح الإشعال، واضغط على زر جهاز الإرسال عن بعد مرة واحدة.</li>
+<li>6. الآن قم بتشغيل الإشعال، وانتظر 10 ثوانٍ ثم أوقف تشغيل الإشعال.</li>
+<li>7. بعد 5 ثوانٍ، يجب أن يعمل جهاز الإرسال عن بعد الآن.</li>
+<li>قفل الباب المركزي مع القفل التلقائي (مفتاح ذو زرين)</li>
+<li>1. تأكد من إلغاء قفل جميع الأبواب باستخدام المفتاح.</li>
+<li>2. اضغط مع الاستمرار على زر مفتاح جهاز الإرسال عن بعد الكبير بينما يومض مؤشر LED لمدة 20 ثانية.</li>
+<li>3. بعد 20 ثانية، اضغط على زر القفل التلقائي الصغير مرة واحدة مع الاستمرار في الضغط على الزر الكبير.</li>
+<li>4. سيتوقف مؤشر LED عن الوميض.</li>
+<li>5. حرر الزر الكبير وسيضيء مؤشر LED باستمرار.</li>
+<li> 6. اضغط على الزر الكبير مرة واحدة، وسوف ينطفئ مؤشر LED.</li>
+<li>7. افتح الباب وأمسك مفتاح جهاز الإرسال عن بعد بالقرب من مفتاح الإشعال، واضغط على زر جهاز الإرسال عن بعد الكبير مرة واحدة.</li>
+<li>8. الآن قم بتشغيل الإشعال، وانتظر لمدة 10 ثوانٍ ثم أوقف تشغيل الإشعال.</li>
+<li>9. بعد 5 ثوانٍ، يجب أن يعمل جهاز الإرسال عن بعد الآن.</li>
+</div>
+<div class="ad-container">
+<iframe id="adFrame" src="https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a"></iframe>
+    </div>
+</div>
+ <div class="ad-container">
+<iframe id="adFrame" src="https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad"></iframe>
+    </div>
+
+<script>
+// روابط الإعلانات
+        const adLinks = [
+            "https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78",
+            "https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff",  // يمكنك إضافة المزيد من الروابط هنا
+            "https://muzzlequick.com/v5bgvtzdz?key=caca17e07e0c43d913b1bb49f4512654",
+
+            "https://muzzlequick.com/ign62tqcez?key=6daa24573ee6b6e8ba0378ca697a9f2d",
+            "https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a",  // يمكنك إضافة المزيد من الروابط هنا
+            "https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad",
+        ];
+
+        let currentAdIndex = 0;
+
+        // دالة لتغيير الإعلان
+        function changeAd() {
+            currentAdIndex = (currentAdIndex + 1) % adLinks.length;
+            document.getElementById('adFrame').src = adLinks[currentAdIndex];
+        }
+
+        // تغيير الإعلان كل دقيقة (60 ثانية)
+        setInterval(changeAd, 10000);
+
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+         document.getElementById('AModel').classList.add('hidden');
+        document.getElementById('BModel').classList.add('hidden');
+        document.getElementById('CModel').classList.add('hidden');
+        document.getElementById('DModel').classList.add('hidden');
+        document.getElementById('EModel').classList.add('hidden');        
+        document.getElementById('FModel').classList.add('hidden');
+        document.getElementById('GModel').classList.add('hidden');
+        document.getElementById('HModel').classList.add('hidden');
+        document.getElementById('IModel').classList.add('hidden');        
+        document.getElementById('JModel').classList.add('hidden');
+        document.getElementById('KModel').classList.add('hidden');
+        document.getElementById('LModel').classList.add('hidden');
+
+         // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

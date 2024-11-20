@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+           
+            font-family: Arial, sans-serif;
+            margin-top: 150px;           
+            background: #f0f0f0;
+            display: flex;
+            align-items: flex-start;            
+             direction: rtl;                   
+
+        }
+
+
+         .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        select {
+            height: 70px;
+            width: 470px;
+            font-size: 30px;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 1px rgba(0, 0, 0, 0.2);
+            color: BLACK;
+            background-color: YELLOW;
+            border: 3px solid BLACK;
+            text-align: right; /* محاذاة النص لليمين */           
+            font-weight: bold;
+        }
+
+        select:focus {
+            outline: yellow;
+        }
+
+        button {
+            display: block;
+            width: 620px;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 30px;
+           background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+             border: 3px solid BLACK;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل الأزرار إلى اليمين */
+            font-weight: bold;
+        }
+
+        .back-button {
+            width: 620px;
+            height: 70px;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 28px;
+            background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+            border: 3px solid BLACK;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل زر الرجوع إلى اليمين */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-container {
+            margin-bottom: 10px;
+            align-items: flex-end; /* محاذاة الأزرار إلى اليمين */
+            margin-left: auto; /* دفع الأزرار لليمين */
+        }
+
+
+             button: hover {
+            background-color:YELLOW;
+        }
+
+       .content-div {
+            background-color: white;
+            padding: 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            width: 558px;
+            border: 2px solid #000080;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080;
+        }
+       header {
+          
+            background: linear-gradient(to bottom,#003366,  #000000);
+            position: fixed;
+            height: 110px;
+            top: 0;
+            width: 100%;            
+            color: black;
+            z-index: 1000;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: yellow;            
+            align-items: center;
+            border: 2px solid #000080;
+            font-size: 18px;
+ 
+        }
+
+        .selected-info {
+           background: #f0f0f0;
+            padding: 30px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 620px;
+            font-size: 35px;
+            text-align: center;
+              font-weight: bold;
+          
+        }
+        label {
+            font-size: 28px;
+            margin-bottom: 2px;
+            display: block;
+            text-align: center; /* محاذاة النص إلى اليمين */
+        }
+      
+ /* تعديل حجم الإعلان */
+        .ad-container iframe {
+            width: 100%;
+            height: 800px; /* تكبير الإعلان ليغطي عرض الصفحة */
+            border: none;
+            margin: 0;
+            border: 2px solid BLACK;
+            text-align: center;
+            font-size: 20px;
+             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات:الهمـــــــــر</label>
+<select id="carSelect" onchange="showModel()">
+<option value="0">اضغط هناء لأختيار اسم السياره</option>
+<option value="A">H1</option>
+<option value="B">H2</option>
+
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>
+        
+<div id="AModel" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+        <button onclick="goToDiv('DV1', 'AModel')">1993-2006</button>
+        
+</div>
+<div id="BModel" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', 'BModel')">2003-2007</button>
+<button onclick="goToDiv('DV3', 'BModel')">2008-2009</button>
+<button onclick="goToDiv('DV4', 'BModel')">2008</button> 
+<button onclick="goToDiv('DV5', 'BModel')">2009</button> 
+ 
+        </div>
+
+<div id="DV1" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>      
+<li> لايوجد بيانات قريبا</li>
+</ul>
+</div>
+<div id="DV2" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li>2003-2007</li>
+<li>1. أغلق جميع الأبواب.</li>
+<li>  2. أدخل المفتاح في الإشعال.</li>
+<li>  3. اضغط مع الاستمرار على زر Power UNLOCK الموجود على لوحة باب السائق حتى يُطلب منك تحريره في الخطوة 9.</li>
+<li>  4. قم بتنفيذ الخطوات من 5 إلى 8 بسرعة.</li>
+<li>  5. أدر مفتاح التشغيل إلى وضع التشغيل (لا تقم بتشغيل المحرك).</li>
+<li>  6. أدر الإشعال إلى وضع إيقاف التشغيل.</li>
+<li>  7. أدر مفتاح التشغيل إلى وضع التشغيل (لا تقم بتشغيل المحرك).</li>
+<li>  8. أدر الإشعال إلى وضع إيقاف التشغيل.</li>
+<li>  9. حرر زر Power UNLOCK الموجود على لوحة الباب.</li>
+<li>  ملاحظة: يجب أن يتم قفل أقفال الأبواب وفتحها.</li>
+<li>  10. اضغط مع الاستمرار على زري LOCK وUNLOCK الموجودين على مفتاح التحكم عن بعد حتى يتم قفل الأبواب وفتحها.</li>
+<li>  ملاحظة: قد يستغرق هذا ما يصل إلى 30 ثانية.</li>
+<li>  11. كرر الخطوة 10 على الفور لكل أجهزة التحكم عن بعد الإضافية وجميع أجهزة التحكم عن بعد الموجودة.</li>
+<li>  12. أدر مفتاح التشغيل إلى وضع التشغيل للخروج من وضع البرمجة.</li>
+<li>  13. اختبار جميع أجهزة الإرسال عن بعد للتشغيل.</li>
+</ul>
+</div>
+<div id="DV3" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li> 2008-2009</li>
+<li> 1. قم بتشغيل الإشعال.</li>
+<li>  2. اضغط مع الاستمرار على زر معلومات السيارة حتى تظهر على الشاشة اضغط لإعادة تعلم مفتاح التحكم عن بعد.</li>
+<li>  ملاحظة : يحتوي زر معلومات السيارة على صورة مركبة وبجوارها الحرف i، وهو موجود على يمين عجلة القيادة.</li>
+<li>  3. اضغط على زر SET/RESET حتى يتم عرض REMOTE KEY LEARNING ACTIVE.</li>
+<li>  ملاحظة: يحتوي زر الضبط/إعادة الضبط على علامة ""، وهو موجود أسفل زر المعلومات مباشرة.</li>
+<li>  4. اضغط مع الاستمرار على زري LOCK وUNLOCK الموجودين على أول جهاز تحكم عن بعد سيتم برمجته لمدة 15 ثانية.</li>
+<li>  5. يجب أن يصدر صوت للإشارة إلى صحة البرمجة.</li>
+<li>  6. كرر الخطوتين 4 و5 لجميع أجهزة التحكم عن بعد المتبقية.</li>
+<li>  7. قم بإيقاف تشغيل الإشعال.</li>
+<li>  8. اختبر جميع أجهزة التحكم عن بعد.</li>
+</ul>
+</div>
+<div id="DV4" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li>2008</li>
+<li>كيفية برمجة هامر H2 </li>
+<li> الإجراء خطوة بخطوة:</li>
+<li> استخدم هذا الإجراء للمركبات المزودة بأزرار مركز معلومات السائق</li>
+<li>1</li>
+<li> أدخل المفتاح وانتقل إلى ON</li>
+<li> الموضع حتى تتمكن من الوصول إلى مركز معلومات السائق</li>
+<li> 2. اضغط على زر معلومات السيارة حتى</li>
+<li> اضغط لإعادة التعرف على شاشات المفاتيح البعيدة</li>
+<li> 3. اضغط على زر الضبط/إعادة الضبط حتى</li>
+<li> التعلم عن بعد مفتاح نشط</li>
+<li> يعرض</li>
+<li> 4. اضغط مع الاستمرار على أزرار القفل وفتح القفل الموجودة على جهاز التحكم عن بعد بدون مفتاح في نفس الوقت لمدة 15 ثانية تقريبًا.  سيصدر صوت رنين يشير إلى أن جهاز التحكم عن بعد مبرمج.</li>
+<li> 5. لبرمجة أجهزة تحكم عن بعد إضافية في هذا الوقت، كرر الخطوة 4. يمكن أن تحتوي هذه السيارة على ثمانية أجهزة تحكم عن بعد مبرمجة كحد أقصى.</li>
+<li> 6. للخروج من وضع البرمجة، قم بإيقاف تشغيل المفتاح وإزالة المفتاح.  اختبار جهاز التحكم عن بعد (أجهزة التحكم عن بعد).</li>
+<li> الإجراء خطوة بخطوة:</li>
+<li> استخدم هذا الإجراء للمركبات</li>
+<li> بدون أزرار مركز معلومات السائقين</li>
+<li> للوصول إلى هذه الشاشة، يجب أن تكون السيارة في وضع الوقوف (P) مع وجود المفتاح في وضع التشغيل (إلى أقصى حد يمكنك الوصول إليه دون تدوير المحرك).</li>
+<li> 1. اضغط على ساق إعادة ضبط عداد مسافات الرحلة حتى</li>
+<li> إعادة تعلم شاشات REMOTE KEY.</li>
+<li>2</li>
+<li> اضغط مع الاستمرار على ساق إعادة ضبط عداد مسافة الرحلة لمدة ثلاثة</li>
+<li> ثواني.  الرسالة</li>
+<li> سيتم عرض REMOTE KEY LEARNING ACTIVE.</li>
+<li> 3. اضغط مع الاستمرار على أزرار القفل وفتح القفل الموجودة على أول جهاز تحكم عن بعد بدون مفتاح في نفس الوقت</li>
+<li> وقت</li>
+<li> لمدة 15 ثانية تقريبًا.  سيصدر صوت رنين يشير إلى أن جهاز التحكم عن بعد موجود</li>
+<li> مبرمجة.</li>
+<li> 4. لبرمجة أجهزة التحكم عن بعد الإضافية في هذا الوقت، كرر الخطوة 3.</li>
+<li> يمكن أن تحتوي هذه السيارة على ثمانية أجهزة تحكم عن بعد مبرمجة كحد أقصى.</li>
+<li> 5. للخروج من وضع البرمجة، قم بإيقاف تشغيل المفتاح وإزالة المفتاح.  اختبار أجهزة التحكم عن بعد.</li>
+
+</ul>
+</div>
+<div id="DV5" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li>2009</li>
+<li>كيفية برمجة هامر H2 </li>
+<li> الإجراء خطوة بخطوة:</li>
+<li> استخدم هذا الإجراء للمركبات المزودة بأزرار مركز معلومات السائق</li>
+<li>1</li>
+<li> أدخل المفتاح وانتقل إلى ON</li>
+<li> الموضع حتى تتمكن من الوصول إلى مركز معلومات السائق</li>
+<li> 2. اضغط على زر معلومات السيارة حتى</li>
+<li> اضغط لإعادة التعرف على شاشات المفاتيح البعيدة</li>
+<li> 3. اضغط على زر الضبط/إعادة الضبط حتى</li>
+<li> التعلم عن بعد مفتاح نشط</li>
+<li> يعرض</li>
+<li> 4. اضغط مع الاستمرار على أزرار القفل وفتح القفل الموجودة على جهاز التحكم عن بعد بدون مفتاح في نفس الوقت لمدة 15 ثانية تقريبًا.  سيصدر صوت رنين يشير إلى أن جهاز التحكم عن بعد مبرمج.</li>
+<li> 5. لبرمجة أجهزة تحكم عن بعد إضافية في هذا الوقت، كرر الخطوة 4. يمكن أن تحتوي هذه السيارة على ثمانية أجهزة تحكم عن بعد مبرمجة كحد أقصى.</li>
+<li> 6. للخروج من وضع البرمجة، قم بإيقاف تشغيل المفتاح وإزالة المفتاح.  اختبار جهاز التحكم عن بعد (أجهزة التحكم عن بعد).</li>
+<li> الإجراء خطوة بخطوة:</li>
+<li> استخدم هذا الإجراء للمركبات</li>
+<li> بدون أزرار مركز معلومات السائقين</li>
+<li> للوصول إلى هذه الشاشة، يجب أن تكون السيارة في وضع الوقوف (P) مع وجود المفتاح في وضع التشغيل (إلى أقصى حد يمكنك الوصول إليه دون تدوير المحرك).</li>
+<li> 1. اضغط على ساق إعادة ضبط عداد مسافات الرحلة حتى</li>
+<li> إعادة تعلم شاشات REMOTE KEY.</li>
+<li>2</li>
+<li> اضغط مع الاستمرار على ساق إعادة ضبط عداد مسافة الرحلة لمدة ثلاثة</li>
+<li> ثواني.  الرسالة</li>
+<li> سيتم عرض REMOTE KEY LEARNING ACTIVE.</li>
+<li> 3. اضغط مع الاستمرار على أزرار القفل وفتح القفل الموجودة على أول جهاز تحكم عن بعد بدون مفتاح في نفس الوقت</li>
+<li> وقت</li>
+<li> لمدة 15 ثانية تقريبًا.  سيصدر صوت رنين يشير إلى أن جهاز التحكم عن بعد موجود</li>
+<li> مبرمجة.</li>
+<li> 4. لبرمجة أجهزة التحكم عن بعد الإضافية في هذا الوقت، كرر الخطوة 3.</li>
+<li> يمكن أن تحتوي هذه السيارة على ثمانية أجهزة تحكم عن بعد مبرمجة كحد أقصى.</li>
+<li> 5. للخروج من وضع البرمجة، قم بإيقاف تشغيل المفتاح وإزالة المفتاح.  اختبار أجهزة التحكم عن بعد.</li>
+</div>
+<div class="ad-container">
+<iframe id="adFrame" src="https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a"></iframe>
+    </div>
+</div>
+ <div class="ad-container">
+<iframe id="adFrame" src="https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad"></iframe>
+    </div>
+
+<script>
+// روابط الإعلانات
+        const adLinks = [
+            "https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78",
+            "https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff",  // يمكنك إضافة المزيد من الروابط هنا
+            "https://muzzlequick.com/v5bgvtzdz?key=caca17e07e0c43d913b1bb49f4512654",
+
+            "https://muzzlequick.com/ign62tqcez?key=6daa24573ee6b6e8ba0378ca697a9f2d",
+            "https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a",  // يمكنك إضافة المزيد من الروابط هنا
+            "https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad",
+        ];
+
+        let currentAdIndex = 0;
+
+        // دالة لتغيير الإعلان
+        function changeAd() {
+            currentAdIndex = (currentAdIndex + 1) % adLinks.length;
+            document.getElementById('adFrame').src = adLinks[currentAdIndex];
+        }
+
+        // تغيير الإعلان كل دقيقة (60 ثانية)
+        setInterval(changeAd, 10000);
+
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+        document.getElementById('AModel').classList.add('hidden');
+        document.getElementById('BModel').classList.add('hidden');
+        
+          // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

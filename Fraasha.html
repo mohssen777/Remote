@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Butterfly</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+background-color:WHITE;
+  }
+  #butterfly {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-image: url('https://i.imgur.com/ud53ZkP.png');
+    background-size: cover;
+    transition: all 5s linear;
+    animation: butterflyAnimation 5s ease-in-out infinite;
+  }
+  @keyframes butterflyAnimation {
+    0% {
+      width: 50px;
+      height: 50px;
+    }
+    50% {
+      width: 200px;
+      height: 200px;
+    }
+    100% {
+      width: 200vw;
+      height: 200vh;
+    }
+  }
+  #name {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: bold;
+    animation: colorChange 1s infinite;
+  }
+  @keyframes colorChange {
+    0% { color: #00FA9A; }
+    25% { color: #F0F8FF; }
+    100% { color: purple; }
+    50% { color: #ff0000; } /* أحمر */
+     75% { color: #ffff00; } /* أصفر */
+     120% { color: #ff00ff; } /* وردي */
+  }
+.content {
+  background-color:BLACK;
+}
+
+
+. tbody td a{
+color: lightblue;
+transform: translate(-50%, -50%);
+font-size: 40px;
+ color:#00008B;
+background-color:#00FFFF;
+ margin: 7px;
+  float: none;
+  display: block;
+  color: lightblue;
+  padding: 15px ;
+ border-radius:30px;
+   
+} 
+    animation: colorChange 1s infinite;
+ text-decoration: none; //الغاء تسطير تحت الكلمه
+}
+
+</style>
+</head>
+<body>
+<div id="butterfly"></div>
+<div id="name">
+<table class="content"  width="90" align="center"  border="2" cellpadding="15" >
+<thead>
+ <tr><td><center>
+<marquee bgcolor="BLACK" 
+ width="390"  direction="RIght" ><CENTER>برمج ريموت سيارتك بيدك
+
+</CENTER></marquee ></center></td></tr>
+
+<tr><td><center>
+
+قريـــــــــــــــــــــــــــبــــأ
+</center></td></tr>         
+</thead>
+</table>
+</div>
+</body>
+</html>
