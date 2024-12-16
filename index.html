@@ -233,6 +233,8 @@
 
  /* تعديل حجم الإعلان */
         .ad-container iframe {
+		
+            position: fixed;
             width: 100%;
             height: 170px; /* تكبير الإعلان ليغطي عرض الصفحة */
             border: none;
@@ -416,28 +418,9 @@
 	};
 </script>
 <script type="text/javascript" src="//yapabbreviate.com/b0fd86a419f2f4abcdcbc9d230e90280/invoke.js"></script>
-
+<script>
  // روابط الإعلانات
-        const adLinks = [
-            "https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78",
-            "https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff",  // يمكنك إضافة المزيد من الروابط هنا
-            "https://muzzlequick.com/v5bgvtzdz?key=caca17e07e0c43d913b1bb49f4512654",
-           
-             "https://muzzlequick.com/ign62tqcez?key=6daa24573ee6b6e8ba0378ca697a9f2d",
-            "https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a",  
-            "https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad",
-        ];
-
-        let currentAdIndex = 0;
-
-        // دالة لتغيير الإعلان
-        function changeAd() {
-            currentAdIndex = (currentAdIndex + 1) % adLinks.length;
-            document.getElementById('adFrame').src = adLinks[currentAdIndex];
-        }
-
-        // تغيير الإعلان كل دقيقة (60 ثانية)
-        setInterval(changeAd, 60000);
+        
 
         function openSidebar() {
             document.getElementById("sidebar").style.width = "250px";
