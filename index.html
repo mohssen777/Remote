@@ -1,476 +1,133 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تعلم البرمجه</title>
+    <title>معلومات</title>
     <style>
-        /* جميع التنسيقات الأخرى */
+        /* جعل الصفحة كاملة تستفيد من المساحة */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* خلفية الصفحة */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin-TOP: 130px;
-           
-        }
-
-
-
-  @keyframes slide {
-            0% { transform: translateX(0); }
-            30% { transform: translateX(-100%); }
-            50% { transform: translateX(-200%); }
-            90% { transform: translateX(0); }
-        }
-
-       
-        /* Existing Car Cards Styles */
-        .container {
-            width: 100%;
-            max-width:100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .sub-header {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #666;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(6px, 1fr));
-            gap: 15px;
-        }
-
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            border: 2px solid black;
-             
-        }
-
-        .card img {
-            width: 100px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 8px;
-        }
-        
-        .card span {
-            font-size: 0.9rem;
-            color: #333;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        
-        /* زر فتح القائمة في الجانب الأيسر */
-        .open-btn {
-            position: left;
-            left: 10px; /* وضع الزر في الجانب الأيسر */
-            font-size: 25px;
-            cursor: pointer;
-            background-color: #111;
-            color: red;
-            border-bottom: 3px solid yellow;
-            padding: 10px 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-
-         /* القائمة الجانبية */
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            right: 0; /* جعل القائمة تظهر من الجانب الأيمن */
-            background-color: lightblue;
-            color: red;
-            overflow-x: hidden;
-            transition: width 0.5s;
-            padding-top: 60px;
-            box-shadow: 5px 5px 10px #333, -2px -2px 10px #555;
-            border-radius: 10px;
-            line-height: 30px;
-            text-align: right;
-        }
-
-        .sidebar a {
-            background-color: yellow;
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: black;
-            display: block;
-            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-            border-radius: 10px;
-             border: 2px solid black;
-             margin-bottom: 5px;
-            
-           
-        }
-
-        .sidebar a:hover {
-            background-color: black;
-            color: yellow;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .sidebar .close-btn {        
-            position: absolute;
-            background-color: black;
-            top: 5px;
-            left: 10px; /* جعل زر الإغلاق في الجانب الأيسر */
-            font-size: 30px;
-            color: yellow;
-            cursor: pointer;
-             transition: color 0.3s, transform 0.3s; /* انتقالات ناعمة لتأثيرات التمرير */
-        }
-         .sidebar .close-btn:hover {
-            color: yellow; /* تغيير لون عند التمرير */
-            transform: scale(1.1); /* تكبير قليلاً عند التمرير */
-        }
-
-  /* Image Slider */
-        .slider {
-            position: relative;
-            width: 100%;
-            height: 150px;
-            overflow: hidden;
-            margin: 10px 0;
-             border: 2px solid black;
-             border-radius: 5px;
-           
-        }
-
-        .slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: slide 10s infinite;
-            border: 2px solid red;
-        }
-
-       
-
-       
-        /* Existing Car Cards Styles */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-             font-size: 10px;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #333;
-           font-size: 10px;
-        }
-
-        .sub-header {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #666;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 15px;
-        }
-
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            border: 2px solid black;
-             
-        }
-
-        .card img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 8px;
-        }
-        
-        .card span {
-            font-size: 0.9rem;
-            color: #333;
-        }
-
- /* تعديل حجم الإعلان */
-        .ad-container iframe {
-		
-            position: fixed;
-            width: 100%;
-            height: 170px; /* تكبير الإعلان ليغطي عرض الصفحة */
-            border: none;
-            margin: 0;
-            border: 2px solid BLACK;
-           border: 2px solid black;
-            text-align: center;
-            font-size: 20px;
-             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-        }
-
- /* الهيدر */
-        header {
-           
-            position: fixed;
-            height: 100px;
-            top: 0;
-            width: 100%;
-            background-color: lightblue;
-            color: black;
-            z-index: 1000;
-            padding: 10px;
+            background-color: #f4f4f4;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
-            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            border: 2px solid black;
-            text-align: center;
-            font-size: 18px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            min-height: 100vh;
+            position: relative;
         }
-       .top-header h1 {
-            margin-right: auto;
-        }
- header marquee {
-            color: BLACK;
-            font-weight: bold;
-             border-radius: 8px;
-            border: 2px solid black;
-            text-align: center;
-            font-size: 20px;
-             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-            
-        }
-	    
-.select-info {
-	position: fixed;
-            height: 100px;
+
+        /* تصميم الإعلان الجانبي */
+        #container-950ff3c74dc90af2e68af8bd5d143c00 {
+            position: fixed;
             top: 0;
+            left: 0;
+            height: 100%; /* الإعلان يغطي كامل طول الصفحة */
+            width: 300px; /* عرض الإعلان */
+            background-color: #0073e6;
+            z-index: 1000;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* تنسيق الهيدر */
+        header {
             width: 100%;
-           background: #f0f0f0;
-            padding: 30px;
-            border: 3px solid #000080;
-            border-radius: 10px;
-            width: 620px;
-            font-size: 35px;
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
             text-align: center;
-              font-weight: bold;
+            margin-left: 320px; /* مساحة للحفاظ على الإعلان الجانبي */
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        /* الحاوية التي تحتوي الأزرار */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin-left: 320px; /* نفس المسافة للحفاظ على الأزرار بجانب الإعلان الجانبي */
+        }
+
+        /* تنسيق الأزرار */
+        .btn {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: calc(50% - 10px);
+            box-sizing: border-box;
+            border: 2px solid red;
+            font-weight: bold;
+        }
+
+        /* تغيير اللون عند التمرير */
+        .btn:hover {
+            background-color: yellow;
+            color: black;
+        }
+
+        /* تصميم الأزرار بحيث تناسب الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .btn {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn {
+                width: 100%;
+                padding: 10px 0;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
-<header>
-    
-        <span class="open-btn" onclick="openSidebar()">☰</span> <!-- زر فتح القائمة -->
-        
-
-           
-            <span><b><marquee bgcolor="lightblue" 
- width="700"  direction="right" ><CENTER>مرحبا بكم في موقع برمج ريموت سيارتك بيدك   /  تعلم كيف تقوم ببرمجه ريموت السياره بدون اي اجهزه</CENTER></marquee ></center></b></span>
-        </div>
-   
-
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar">
-        <a href="#" class="close-btn" onclick="closeSidebar()">×</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الرئيسية</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الملف الشخصي</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الإعدادات</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">سياسة الخصوصية</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">معلومات حول التطبيق</a>
-    </div>
- <!-- Image Slider -->
-   
-</header>
 <body>
- <!-- إعلان متعدد الروابط في الأعلى مع التغيير التلقائي كل دقيقة -->
-    <div class="select-info  ">
-	<div class="ad-container">
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'b0fd86a419f2f4abcdcbc9d230e90280',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//yapabbreviate.com/b0fd86a419f2f4abcdcbc9d230e90280/invoke.js"></script>
-	</div>
-	    
-		<div class="container">
-         <h1>اضغط على اي شعار لتضهر لك المعلومــــــــــــــات</h1>
-        <div class="grid">
-            <!-- Car brand cards with links -->
-            
- <a href="TOYOTA.HTML"><center><img class="card" src="https://f.top4top.io/p_3081ur30h1.jpg" width="110px" height="110px"></center></a> 
-  <a href="KIA.HTML"><center><img class="card " src="https://f.top4top.io/p_308141rpm1.jpg" width="110px" height="110px"></center></a>  
-
-
-
-<a href="SOUPRA.HTML"><center><img class="card " src="https://g.top4top.io/p_3081nz8hp1.jpg" width="110px" height="110px"></center></a> 
-<a href="SATRON.HTML"><center><img class="card " src="https://a.top4top.io/p_3081sm3cw1.jpg" width="110px" height="110px"></center></a></td >
-
-
-
-<a href="LEKZZ.HTML"><center><img class="card " src="https://a.top4top.io/p_3094zi8c81.jpg " width="110px" height="110px"></center></a></td >
-<a href="JEEP.HTML"><center><img class="card " src="https://a.top4top.io/p_30949rzoe1.jpg " width="110px" height="110px"></center></a></td >
-
-
-<a href="BMW.HTML"><center><img class="card " src="https://l.top4top.io/p_3113tsnnu1.jpg " width="110px" height="110px"></center></a>
-<a href="GMC.HTML"><center><img class="card " src="https://j.top4top.io/p_3094zerhd1.jpg " width="110px" height="110px"></center></a>
-
-
-<a href="dihatso.HTML"><center><img class="card " src="https://g.top4top.io/p_3081ksmaz2.jpg" width="110px" height="110px"></center></a>
-<a href="hionda.HTML"><center><img class="card " src="https://f.top4top.io/p_30940zqed1.jpg " width="110px" height="110px"></center></a>
-
-
-<a href="MISTBOSHI.HTML"><center><img class="card " src="https://f.top4top.io/p_3094bfotl1.jpg " width="110px" height="110px"></center></a>
-<a href="HEOANDAI.HTML"><center> <img class="card " src="https://f.top4top.io/p_3081c6fde3.jpg" width="110px" height="110px"></center></a>
-
-
-<a href="volvo.HTML"><center><img class="card " src="https://j.top4top.io/p_3081iwjrp3.jpg" width="110px" height="110px"></center></a>
-<a href="SUZUE.HTML"> <center><img class="card " src=" https://g.top4top.io/p_3113fq8ge1.jpg " width="110px" height="110px"></center>
-
-
-<a href="NISSAN.HTML"><center><img class="card " src="https://f.top4top.io/p_3094gcizn1.jpg " width="110px" height="110px"></center></a>
-<a href="SOZOKI.HTML"><center><img class="card " src="https://f.top4top.io/p_3081vjkay1.jpg" width="110px" height="110px"></center></a></td >
-
-
-
-<a href="DAEW.HTML"><center><img class="card " src="https://l.top4top.io/p_3094yxj6s1.jpg " width="110px" height="110px"></center></a></td >
-<a href="SHAVER.HTML"><center><img class="card " src="https://j.top4top.io/p_30812grcf1.jpg" width="110px" height="110px"></center></a></td >
-
-
-<a href="BUICK.HTML"><center><img class="card " src="https://f.top4top.io/p_3081ojcnb1.jpg" width="110px" height="110px"></center></a></td >
-<a href="Citroen.HTML"><center><img class="card " src="https://a.top4top.io/p_3081n79kw1.jpg" width="110px" height="110px"></center></a></td >
-
-
-<a href="hmmar.HTML"><center><img class="card " src="https://j.top4top.io/p_30942w7ni1.jpg " width="110px" height="110px"></center></a>
-<a href="Jagoar.HTML"><center><img class="card " src="https://a.top4top.io/p_30943jby61.jpg " width="110px" height="110px"></center></a>
-
-
-
-<a href="Landrovr.HTML"><center><img class="card " src="https://j.top4top.io/p_3094tlz9i1.jpg " width="110px" height="110px"></center></a>
-<a href="fiat.HTML"><center><img class="card " src="https://g.top4top.io/p_30945nrxv1.jpg " width="110px" height="110px"></center></a>
-
-
-<a href="AODI.HTML"><center><img class="card " src="https://l.top4top.io/p_3113estl11.jpg " width="110px" height="110px"></center></a>
-<a href="mini.HTML"><center><img class="card " src="https://a.top4top.io/p_3094dr2jd1.jpg " width="110px" height="110px"></center></a>
-
-
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3081a3sqd1.jpg" width="110px" height="110px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://j.top4top.io/p_30948k3ia1.jpg " width="110px" height="110px"></center></a>
-
-
-<a href="Fraasha.html"><center><img class="card " src="https://g.top4top.io/p_3113pqrv61.jpg " width="110px" height="110px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3113vj7gi1.jpg " width="110px" height="110px"></center>
-
-
-<a href="Fraasha.html"><center><img class="card " src="https://a.top4top.io/p_3094mkvwy1.jpg " width="110px" height="110px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3094uncal1.jpg " width="110px" height="110px"></center></a>
-
-
-
-<a href="PONTIAC.HTML"><center><img class="card " src="https://f.top4top.io/p_31134v5iw1.jpg " width="110px" height="110px"></center></a>
-<a href="CADILLAC.HTML"> <center><img class="card " src=" https://j.top4top.io/p_311324uzz1.jpg " width="110px" height="110px"></center></a>
-
-
-
-<a href="scion.HTML"><center><img class="card " src="https://g.top4top.io/p_31136yo681.jpg " width="110px" height="110px"></center></a>
-<a href="EGLE.HTML"><center><img class="card " src="https://a.top4top.io/p_3113d37jg1.jpg " width="110px" height="110px"></center></a>
-
-
-            </a>
-            <!-- Add more cards as needed with links -->
-        </div>
+    <!-- الإعلان الجانبي -->
+    <div id="container-950ff3c74dc90af2e68af8bd5d143c00">
+        <script async="async" data-cfasync="false" src="//yapabbreviate.com/950ff3c74dc90af2e68af8bd5d143c00/invoke.js"></script>
     </div>
- <!-- إعلان متعدد الروابط في الأعلى مع التغيير التلقائي كل دقيقة -->
-<div class="ad-container">
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'b0fd86a419f2f4abcdcbc9d230e90280',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//yapabbreviate.com/b0fd86a419f2f4abcdcbc9d230e90280/invoke.js"></script>
-	</div>
-	    <script>
- // روابط الإعلانات
-        
 
-        function openSidebar() {
-            document.getElementById("sidebar").style.width = "250px";
-        }
+    <header>
+        <h1>مرحبًا بك في موقعي</h1>
+    </header>
 
-        function closeSidebar() {
-            document.getElementById("sidebar").style.width = "0";
-        }
- // متغيرات لتتبع السحب
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        // الكشف عن بدء السحب
-        document.addEventListener('touchstart', function(event) {
-            touchStartX = event.changedTouches[0].screenX;
-        });
-
-        // الكشف عن إنهاء السحب
-        document.addEventListener('touchend', function(event) {
-            touchEndX = event.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        // التعامل مع السحب
-        function handleSwipe() {
-            if (touchEndX < touchStartX && touchStartX - touchEndX > 100) {
-                openSidebar();  // إذا سحب المستخدم من اليمين إلى اليسار، نفتح القائمة
-            }
-            if (touchEndX > touchStartX && touchEndX - touchStartX > 100) {
-                closeSidebar();  // إذا سحب المستخدم من اليسار إلى اليمين، نغلق القائمة
-            }
-        }
-    </script>
-
+    <div class="container">
+        <!-- الأزرار -->
+        <button class="btn" onclick="window.location.href='https://www.easyhits4u.com/?ref=alhkwmh301';">طريقة برمجة السيارات البصمة</button>
+        <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">أنواع الريموتات البصمة</button>
+        <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">أرقام الشفرات</button>
+        <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">برمجة ريموت تويوتا بصمة</button>
+        <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">شفرات</button>
+        <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">Program Remote Toyota</button>
+        <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">معلومات هامة</button>
+        <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">برمجة متنوعة</button>
+    </div>
 </body>
 </html>
