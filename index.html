@@ -1,125 +1,217 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معلومات</title>
     <style>
-        /* جعل الصفحة كاملة تستفيد من المساحة */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* خلفية الصفحة */
         body {
+           
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            margin-top: 150px;           
+            background: #f0f0f0;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            min-height: 100vh;
-            position: relative;
+            align-items: flex-start;            
+             direction: rtl;                   
+
         }
 
-        /* تصميم الإعلان الجانبي */
-        #container-950ff3c74dc90af2e68af8bd5d143c00 {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%; /* الإعلان يغطي كامل طول الصفحة */
-            width: 300px; /* عرض الإعلان */
-            background-color: #0073e6;
-            z-index: 1000;
+
+         .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+             
+        }
+
+        select {
+            height: 70px;
+            width: 550px;
+            font-size: 30px;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 1px rgba(0, 0, 0, 0.2);
+            color: BLACK;
+            background-color: YELLOW;
+            border: 3px solid BLACK;
+            text-align: right; /* محاذاة النص لليمين */           
+            font-weight: bold;
+        }
+
+        select:focus {
+            outline: yellow;
+        }
+
+        button {
+            display: block;
+            width:97%;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 30px;
+           background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+             border: 3px solid BLACK;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل الأزرار إلى اليمين */
+            font-weight: bold;
+        }
+
+        .back-button {
+            width: 97%;
+            height: 70px;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 28px;
+            background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+            border: 3px solid BLACK;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل زر الرجوع إلى اليمين */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-container {
+            margin-bottom: 10px;
+            align-items: flex-end; /* محاذاة الأزرار إلى اليمين */
+            margin-left: auto; /* دفع الأزرار لليمين */
+        }
+
+
+             button: hover {
+            background-color:YELLOW;
+        }
+       
+.selected-info {
+           background: #f0f0f0;
+            padding: 30px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 35px;
+            text-align: center;
+              font-weight: bold;
+                margin: 20px;
+            padding-bottom: 200px; /* يضيف مساحة أسفل المحتوى لتجنب تغطيته بالشريط */
+          
+        }
+        label {
+            font-size: 28px;
+            margin-bottom: 2px;
+            display: block;
+            text-align: center; /* محاذاة النص إلى اليمين */
+        }
+
+       .content-div {
+            background-color: white;
+            padding: 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            width: 90%;
+            border: 2px solid #000080;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080;
+        }
+       header {
+          
+            background: linear-gradient(to bottom,#003366,  #000000);
+            position: fixed;
+            height: 110px;
+            top: 0;
+            width: 100%;            
+            color: black;
+            z-index: 1000;
+            padding: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            overflow: hidden;
-        }
-
-        /* تنسيق الهيدر */
-        header {
-            width: 100%;
-            background-color: #0073e6;
-            color: white;
-            padding: 20px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
             text-align: center;
-            margin-left: 320px; /* مساحة للحفاظ على الإعلان الجانبي */
+            font-size: 20px;
+            font-weight: bold;
+            color: yellow;            
+            align-items: center;
+            border: 2px solid #000080;
+            font-size: 18px;
+             overflow: hidden; /* تأكيد أن الإعلان لا يمتد خارج الهيدر */
         }
 
         header h1 {
             margin-bottom: 10px;
         }
 
-        /* الحاوية التي تحتوي الأزرار */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
+        /* تصميم الإعلان داخل الهيدر */
+        #container-950ff3c74dc90af2e68af8bd5d143c00 {
+            margin: 10px auto;
+            width: 100%; /* تأكد من أن الإعلان يستفيد من كامل العرض */
+            max-width: 728px; /* الحد الأقصى لعرض الإعلان */
+            height: auto;
+            min-height: 50px; /* تحديد الحد الأدنى للارتفاع */
+            z-index: 999;
+            text-align: center;
+        }
+
+        
+
+        
+      
+
+
+.ad-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%; /* يغطي العرض بالكامل */
+            background-color: #f1f1f1;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+            border-top: 3px solid black;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .ad-container iframe {
             width: 100%;
-            margin-left: 320px; /* نفس المسافة للحفاظ على الأزرار بجانب الإعلان الجانبي */
-        }
-
-        /* تنسيق الأزرار */
-        .btn {
-            background-color: black;
-            color: white;
+            height: 170px; /* يمكن ضبط الطول حسب رغبتك */
             border: none;
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            width: calc(50% - 10px);
-            box-sizing: border-box;
-            border: 2px solid red;
-            font-weight: bold;
+        
+     
         }
+       
+      
 
-        /* تغيير اللون عند التمرير */
-        .btn:hover {
-            background-color: yellow;
-            color: black;
-        }
-
-        /* تصميم الأزرار بحيث تناسب الشاشات الصغيرة */
-        @media (max-width: 768px) {
-            .btn {
-                padding: 12px 25px;
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .btn {
-                width: 100%;
-                padding: 10px 0;
-                font-size: 14px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- الإعلان الجانبي -->
-    <div id="container-950ff3c74dc90af2e68af8bd5d143c00">
-        <script async="async" data-cfasync="false" src="//yapabbreviate.com/950ff3c74dc90af2e68af8bd5d143c00/invoke.js"></script>
-    </div>
-
-    <header>
-        <h1>مرحبًا بك في موقعي</h1>
-    </header>
-
-    <div class="container">
-        <!-- الأزرار -->
+ <header>
+<!-- الكود الإعلاني داخل الهيدر -->
+        <div id="container-950ff3c74dc90af2e68af8bd5d143c00">
+            <script async="async" data-cfasync="false" src="//yapabbreviate.com/950ff3c74dc90af2e68af8bd5d143c00/invoke.js"></script>
+        </div>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    - الأزرار -->
         <button class="btn" onclick="window.location.href='https://www.easyhits4u.com/?ref=alhkwmh301';">طريقة برمجة السيارات البصمة</button>
         <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">أنواع الريموتات البصمة</button>
         <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">أرقام الشفرات</button>
@@ -128,6 +220,14 @@
         <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">Program Remote Toyota</button>
         <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">معلومات هامة</button>
         <button class="btn" onclick="window.location.href='https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff';">برمجة متنوعة</button>
+        </div>
+
+
+</div>
+ <div class="ad-container">
+<iframe id="adFrame" src="https://www.profitablecpmrate.com/ajga08pj?key=22e846e7babeda567215e46d4901e2ea"></iframe>
     </div>
+
+
 </body>
 </html>
